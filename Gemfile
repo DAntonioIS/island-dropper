@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.5'
 
 #devise for auth
 gem 'devise'
+gem 'devise-bootstrap-views'
 
 gem 'twitter-bootstrap-rails'
 

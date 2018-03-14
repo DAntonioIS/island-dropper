@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'driver/apply'
+
   get 'profile/index'
 
   devise_for :users

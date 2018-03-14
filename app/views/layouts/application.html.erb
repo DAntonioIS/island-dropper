@@ -49,9 +49,39 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
              <li><%= link_to "DRIVERS", "/path2"  %></li>
-             <li><%= link_to "HELP", "/path1"  %></li>
-           <!-- <li><%= link_to "Link3", "/path3"  %></li> -->
+             <li><%= link_to "HELP", "/path1"  %></li>             
+         
           </ul>
+  
+
+          <!-- users login nav links -->
+          <ul class="nav navbar-nav navbar-right" align="right">
+
+            <!-- check if user is signed in a show appropriate links-->
+             <% if user_signed_in? %>
+
+              <li class="dropdown">
+                 
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>  <b class="caret"></b></a>
+
+               <ul class="dropdown-menu">
+                   <li class="dropdown-header">Update Profile!</li>              
+                    <li class="divider"></li>
+                    <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+                    
+              </ul> </li>
+                                
+                <li> <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, :class => 'navbar-link' %> </li>
+            <% else %>
+
+              <li><%= link_to "LOGIN", new_user_session_path, :class => 'navbar-link'  %> </li>
+              <li> <%= link_to "SIGN UP", new_user_registration_path, :class => 'navbar-link'  %> </li>
+              
+
+            <% end %>
+
+          </ul> <!-- end user loginlinks -->
+
         </div>
       </div>
     </div>
@@ -81,11 +111,6 @@
 
       </div><!--/row-->  
 
-       
-      <!--
-      <footer>
-        <p>&copy; Company 2018</p>
-      </footer>  -->
 
     </div> <!-- /container -->
 
@@ -95,7 +120,7 @@
          <div class="col-lg-9">
 
            <footer>
-            <p>&copy; Company 2018</p>
+            <p>Island Dropper Trinidad Limited &copy; Company 2018</p>
            </footer>
          
          

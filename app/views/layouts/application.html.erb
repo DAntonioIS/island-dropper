@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Islanddropper" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Island Dropper" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -60,7 +60,6 @@
          
           </ul>
   
-
           <!-- users login nav links -->
           <ul class="nav navbar-nav navbar-right" align="right">
 
@@ -72,7 +71,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>  <b class="caret"></b></a>
 
                <ul class="dropdown-menu">
-                   <li class="dropdown-header">Manage Profile!</li> 
+                   <!--<li class="dropdown-header">Manage Profile!</li> -->
                     <li><%= link_to 'Book Deliveries', profile_index_path, :class => 'navbar-link' %> </li>
                     <li class="divider"></li>
                     <li><%= link_to 'Edit Account', edit_user_registration_path, :class => 'navbar-link' %> </li>
@@ -85,7 +84,6 @@
               <li><%= link_to "LOGIN", new_user_session_path, :class => 'navbar-link'  %> </li>
               <li> <%= link_to "SIGN UP", new_user_registration_path, :class => 'navbar-link'  %> </li>
               
-
             <% end %>
 
           </ul> <!-- end user loginlinks -->
@@ -115,10 +113,7 @@
             </ul> 
          </div>  -->   <!--/.well -->  
 
-        </div><!--/span--> 
-
       </div><!--/row-->  
-
 
     </div> <!-- /container -->
 
@@ -129,12 +124,13 @@
 
            <footer>
             <p>Island Dropper Trinidad Limited &copy; Company 2018</p>
-           </footer>
-         
+           </footer> 
+
+        </div>       
          
         </div>     
 
-    </div> <!-- /container -->
+    </div> <!--  footer container -->
 
   </body>
 </html>

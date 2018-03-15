@@ -1,2 +1,21 @@
-<h1>Book your deliveries</h1>
+<h2>Book your deliveries</h2>
+
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :pick_name %>
+  <%= f.input :pick_address %>
+  <%= f.input :pick_phone_number %>
+
+    <%= f.input :drop_name %>
+   <%= f.input :drop_address %>
+   <%= f.input :drop_phone_number %>
+
+  <%= f.button :submit %>
+<% end %>
+<!--
+https://app.getswift.co/api/v2/quotes -->
+
+
+
+<h1>your previous deliveries</h1>
 

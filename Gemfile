@@ -19,6 +19,9 @@ gem 'devise-bootstrap-views'
 #https://github.com/seyhunak/twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails'
 
+#create forms using simple form -- https://github.com/plataformatec/simple_form
+gem 'simple_form'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

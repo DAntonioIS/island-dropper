@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313141030) do
+ActiveRecord::Schema.define(version: 20180315195310) do
+
+  create_table "delivery_details", force: :cascade do |t|
+    t.string "delivery_name"
+    t.string "delivery_address"
+    t.string "delivery_phone_number"
+    t.datetime "delivery_requested_time"
+    t.datetime "delivery_best_possible_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tracking_details", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "customer_tracking"
+    t.string "dispatcher_tracking"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

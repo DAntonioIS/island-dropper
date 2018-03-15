@@ -5,6 +5,8 @@ class ProfileController < ApplicationController
 
   def index
 
+  	#access the model for previous deliveries, pass it to the index view
+
   end
 
 end

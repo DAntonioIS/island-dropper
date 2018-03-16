@@ -1,63 +1,8 @@
-<h2>Book your deliveries</h2>
 
 
-<!-- test form helpers -->
-<%= form_for @booking do |f| %>
-  
-  Pick Up Location:
-  <ul>
-    <%= f.fields_for :delivery_details do |pickup_form| %>
-      <li>
-        <%= pickup_form.label :delivery_name %>
-        <%= pickup_form.text_field :delivery_name %>
-
-        <%= pickup_form.label :delivery_address %>
-        <%= pickup_form.text_field :delivery_address %>
- 
-        <%= pickup_form.label :delivery_phone_number %>
-        <%= pickup_form.text_field :delivery_phone_number %>
-        ...
-      </li>
-    <% end %>
-  </ul>
-
-  Drop off Location:
- <!-- <ul>
-    <%= f.fields_for :delivery_details do |dropoff_form| %>
-      <li>
-        <%= dropoff_form.label :delivery_name %>
-        <%= dropoff_form.text_field :delivery_name %>
-
-        <%= dropoff_form.label :delivery_address %>
-        <%= dropoff_form.text_field :delivery_address %>
- 
-        <%= dropoff_form.label :delivery_phone_number %>
-        <%= dropoff_form.text_field :delivery_phone_number %>
-        ...
-      </li>
-    <% end %>
-  </ul> -->
-
- <%= submit_tag("get quote") %>
-
-
-<% end %>
-
-<!--
-	t.string "delivery_name"
-    t.string "delivery_address"
-    t.string "delivery_phone_number"
-
-    t.datetime "delivery_requested_time"
-    t.datetime "delivery_best_possible_time"  -->
-
-<!--   <%= current_user.email %> -->
-
-
-
-<h2>current deliveries</h2>
+<h2> Current deliveries</h2>
 <p>you can edit these up to 2 hrs before</p>
 
 
-<h2>past deliveries</h2>
+<h2>Past deliveries</h2>
 <p>you cant edit these</p>

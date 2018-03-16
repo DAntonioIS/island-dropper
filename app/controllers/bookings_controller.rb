@@ -4,11 +4,18 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-  		#create new booking object for current user
-  		@booking=Booking.new
+		#pass all model bookings for this user
+  end
 
-		#also pass all the bookings for this user
+  def new
+  	#send a new delivery booking
+  	
+  end
 
+  def create
+
+  	#take data from form and process
+  	
   end
 
 

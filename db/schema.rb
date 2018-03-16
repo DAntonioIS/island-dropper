@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315195310) do
+ActiveRecord::Schema.define(version: 20180316135957) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.string "delivery_id"
+    t.string "status"
+    t.datetime "delivery_create_date"
+    t.decimal "delivery_distance"
+    t.string "item_description"
+    t.integer "delivery_reference"
+    t.string "delivery_instructions"
+    t.boolean "itemneed_purchased", default: false
+    t.decimal "delivery_price"
+    t.string "customer_reference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.index ["customer_id"], name: "index_bookings_on_customer_id"
+  end
 
   create_table "delivery_details", force: :cascade do |t|
     t.string "delivery_name"
@@ -20,6 +37,8 @@ ActiveRecord::Schema.define(version: 20180315195310) do
     t.datetime "delivery_best_possible_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "booking_id"
+    t.index ["booking_id"], name: "index_delivery_details_on_booking_id"
   end
 
   create_table "tracking_details", force: :cascade do |t|
@@ -27,6 +46,8 @@ ActiveRecord::Schema.define(version: 20180315195310) do
     t.datetime "updated_at", null: false
     t.string "customer_tracking"
     t.string "dispatcher_tracking"
+    t.integer "booking_id"
+    t.index ["booking_id"], name: "index_tracking_details_on_booking_id"
   end
 
   create_table "users", force: :cascade do |t|

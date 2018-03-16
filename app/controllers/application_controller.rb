@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
         # set page for sign in
         def after_sign_in_path_for(resource)
 
-      		profile_index_path
+      		bookings_path
     	end
 
     	#set page for sign out go to home page

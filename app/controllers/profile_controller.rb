@@ -5,8 +5,16 @@ class ProfileController < ApplicationController
 
   def index
 
+  	#pass current user to view
+  	@tuser=current_user
+
   	#access the model for previous deliveries, pass it to the index view
 
+  end
+
+
+  def create
+  	
   end
 
 end

@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+
+
+  get 'bookings/show'
+
   get 'driver/apply'
 
-  get 'profile/index'
+  resource :bookings
 
   devise_for :users, :controllers => { :registrations => :registrations }
   

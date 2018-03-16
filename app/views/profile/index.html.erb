@@ -1,7 +1,20 @@
 <h2>Book your deliveries</h2>
 
 
-<%= simple_form_for @user do |f| %>
+<%= form_for @booking do |f| %>
+
+  
+
+
+
+
+
+<% end %>
+
+
+<!--   <%= current_user.email %> 
+
+<%= simple_form_for @tuser do |f| %>
   <%= f.input :pick_name %>
   <%= f.input :pick_address %>
   <%= f.input :pick_phone_number %>
@@ -11,7 +24,7 @@
    <%= f.input :drop_phone_number %>
 
   <%= f.button :submit %>
-<% end %>
+<% end %>-->
 <!--
 https://app.getswift.co/api/v2/quotes -->
 

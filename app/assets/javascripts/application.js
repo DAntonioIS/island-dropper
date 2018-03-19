@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery-ujs
-//= require gmaps-auto-complete
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .

@@ -29,6 +29,12 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
+    <!-- dirty way to add this butt -->
+     <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<% Rails.application.secrets.key_google_places%>&libraries=places"></script>-->
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQUqcR77raDKIBe9K6OiQs-6afHgfUOi4&libraries=places"></script> 
+     
+
     <%= javascript_include_tag "application" %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->

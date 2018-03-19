@@ -19,6 +19,10 @@ gem 'devise-bootstrap-views'
 #https://github.com/seyhunak/twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails'
 
+#Autcomplete for geocoding addresses https://github.com/kristianmandrup/gmaps-autocomplete-rails
+gem 'gmaps-autocomplete-rails'
+
+
 #create forms using simple form -- https://github.com/plataformatec/simple_form
 gem 'simple_form'
 

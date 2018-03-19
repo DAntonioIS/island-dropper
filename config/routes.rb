@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+ get 'bookings/checkout'
 
   get 'bookings/show'
 

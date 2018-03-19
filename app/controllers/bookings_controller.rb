@@ -18,5 +18,22 @@ class BookingsController < ApplicationController
   	
   end
 
+  def checkout
+
+    #take data from form, get quote 
+
+    #loads checkoutpage with data
+    
+  end
+
+
+  private
+      #validate params individually
+     def article_params
+
+      params.require(:booking).permit(:title, :text)
+  
+    end
+
 
 end

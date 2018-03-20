@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-  	#send a new delivery booking
+  
   	
   end
 
@@ -20,7 +20,20 @@ class BookingsController < ApplicationController
 
   def checkout
 
-    #take data from form, get quote 
+    #take param data from form, 
+    @partialbooking=current_user.booking.create(item_description: params[:item_descript], delivery_instructions: params[:delivery_instruct])
+
+    pickUp= @partialbooking.delivery_details.create(delivery_name: params[:pick_name],
+    delivery_address: params[:pick_address], delivery_phone_number: params[:pick_phone] )
+
+    dropOff= @partialbooking.delivery_details.create(delivery_name: params[:drop_name],
+    delivery_address: params[:drop_address], delivery_phone_number: params[:drop_phone] )
+
+    #get quote from getswift server via JSON
+
+
+    #update partial booking and pass
+
 
     #loads checkoutpage with data
     
@@ -31,7 +44,7 @@ class BookingsController < ApplicationController
       #validate params individually
      def article_params
 
-      params.require(:booking).permit(:title, :text)
+      params.require(:deliverydetail).permit(:pick_phone, :pick_address, :pick_name)
   
     end
 

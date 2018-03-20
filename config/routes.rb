@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
- get 'bookings/checkout'
-
-  get 'bookings/show'
+  post 'bookings/checkout'
 
   get 'driver/apply'
 

@@ -19,6 +19,9 @@ gem 'devise-bootstrap-views'
 #https://github.com/seyhunak/twitter-bootstrap-rails
 gem 'twitter-bootstrap-rails'
 
+#multi json for handling JSON https://github.com/intridea/multi_json
+gem 'multi_json', '~> 1.13.1'
+
 
 #create forms using simple form -- https://github.com/plataformatec/simple_form
 gem 'simple_form'

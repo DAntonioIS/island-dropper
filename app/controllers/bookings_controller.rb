@@ -1,3 +1,8 @@
+
+#require 'multi_json'
+#require 'rubygems'
+require 'excon'
+
 class BookingsController < ApplicationController
   
   #user must be logged in before seeing this page
@@ -8,13 +13,11 @@ class BookingsController < ApplicationController
   end
 
   def new
-  
-  	
+	
   end
 
   def create
-
-  	#take data from form and process
+  	#process payment and save booking in db
   	
   end
 
@@ -29,10 +32,49 @@ class BookingsController < ApplicationController
     dropOff= @partialbooking.delivery_details.create(delivery_name: params[:drop_name],
     delivery_address: params[:drop_address], delivery_phone_number: params[:drop_phone] )
 
+    #create json body using form params
+          json.set! :apiKey, Rails.application.secrets.key_getswift_api.to_s
+          json.set! :booking do
+              json.set! :pickupDetail do
+                 json.set! :address, pickUp.delivery_address.to_s
+              end
+
+              json.set! :dropoffDetail do
+                   json.set! :address, dropOff.delivery_address.to_s
+              end
+          end
+
     #get quote from getswift server via JSON
 
+      if json
 
-    #update partial booking and pass
+        #render plain for test
+        render plain: json
+
+      #response=Excon.post('https://app.getswift.co/api/v2/quotes',
+      #:body => json,
+      #:headers => { "Content-Type" => "application/json" })
+
+       #   if response.status  
+
+            #read json from response
+       #     begin
+        #        @partialresponse= MultiJson.load(response.body)
+       #     rescue MultiJson::ParseError => exception
+       #         exception.data 
+        #        exception.cause 
+        #    end
+            
+        #  end #end inner if
+
+      #else
+
+          #load some error page
+
+                     
+      end #outer if
+
+    #update partial booking and pass to view
 
 
     #loads checkoutpage with data

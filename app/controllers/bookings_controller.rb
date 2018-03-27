@@ -12,13 +12,17 @@ class BookingsController < ApplicationController
   end
 
   def new
-	
-    
-
+	 #just load the new view
   end
 
   def create
-  	#process payment and save booking in db
+    #show some kind of spinner to indicate processing
+
+    #process payment and save booking in db
+
+    #create json to be sent,
+
+    #use connection to post then persistent =false
   	
   end
 
@@ -26,13 +30,14 @@ class BookingsController < ApplicationController
 
     #show some kind of spinner to indicate processing
 
-    #take param data from form, 
+    #take param data from form 
+
     @partialbooking=current_user.booking.create(item_description: params[:item_descript], delivery_instructions: params[:delivery_instruct])
 
-    pickUp= @partialbooking.delivery_details.create(delivery_name: params[:pick_name],
-    delivery_address: params[:pick_address], delivery_phone_number: params[:pick_phone] )
+    @pickUp= @partialbooking.delivery_details.create(delivery_name: params[:pick_name],
+    delivery_address: params[:pick_address], delivery_phone_number: params[:pick_phone], the_pickup: true)
 
-    dropOff= @partialbooking.delivery_details.create(delivery_name: params[:drop_name],
+    @dropOff= @partialbooking.delivery_details.create(delivery_name: params[:drop_name],
     delivery_address: params[:drop_address], delivery_phone_number: params[:drop_phone] )
   
     #get swift api key for json builder
@@ -40,10 +45,10 @@ class BookingsController < ApplicationController
 
     #create json to be sent, its not at all pretty but will do for now    
     pdetailll=Jbuilder.new do |p|     
-        p.address pickUp.delivery_address.to_s
+        p.address @pickUp.delivery_address.to_s
     end
     ddetailll=Jbuilder.new do |d|     
-        d.address dropOff.delivery_address.to_s
+        d.address @dropOff.delivery_address.to_s
     end  
     bookkk= Jbuilder.new do |booking|     
         booking.pickupDetail pdetailll
@@ -57,7 +62,7 @@ class BookingsController < ApplicationController
     #render  plain: jsonquote.target!.to_s
 
     #create excon connection for server use & get quote
-     @connection = Excon.new('https://app.getswift.co',instrumentor: ActiveSupport::Notifications)
+     @connection = Excon.new('https://app.getswift.co', :persistent => true)
      @connection.request(:idempotent => true)
      logger.info "connection sorted" 
      post_response = @connection.post(:path => '/api/v2/quotes', :body => jsonquote.target!.to_s, :headers => { "Content-Type" => "application/json"})
@@ -67,14 +72,30 @@ class BookingsController < ApplicationController
       logger.info " API response "
       logger.info post_response.status 
 
-        if post_response.status == "200"
+      #add error handling here  ----
+      if response.status == 200
 
-            #parse the body 
-           #post_response.body    
+         logger.info "parsing body "
+         #parse the body 
 
-          #update partial booking and pass to view
+         begin
+            
+            @parse=MultiJson.load(post_response.body)
 
-       end             
+            #update partial booking and pass to view
+            @partialbooking.delivery_distance=@parse['quote']['distanceKm']
+            @partialbooking.delivery_price=@parse['quote']['fee']['cost'].to_d
+            @pickUp.delivery_best_possible_time=@parse['quote']['pickup']['time']['average']
+            @dropOff.delivery_best_possible_time=@parse['quote']['dropoff']['time']['average']
+
+
+        rescue MultiJson::ParseError => exception
+            exception.data 
+            exception.cause 
+        end
+
+      end #end reponse if
+      logger.info "success "
 
     #loads checkoutpage with data
     
@@ -84,18 +105,11 @@ class BookingsController < ApplicationController
   private
 
 
-
       #validate params individually
      def article_params
 
       params.require(:deliverydetail).permit(:pick_phone, :pick_address, :pick_name)
   
-    end
-
-    #method to display 404 page
-    def page_not_found
-
-        raise ActionController::RoutingError.new('Not Found')
     end
 
 

@@ -18,7 +18,7 @@
  
   <div class="form-group">
     <label class="control-label" for="pick_name"> Name </label>
-    <%= text_field_tag :pick_name, current_user.first_name.to_s.concat( current_user.last_name.to_s), class: 'form-control', placeholder: "Enter Name", required: true %>
+    <%= text_field_tag :pick_name, current_user.first_name.to_s.concat(' ').concat(current_user.last_name.to_s), class: 'form-control', placeholder: "Enter Name", required: true %>
   </div>
 
  

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320135847) do
+ActiveRecord::Schema.define(version: 20180326143554) do
 
   create_table "bookings", force: :cascade do |t|
     t.string "delivery_id"
@@ -38,7 +38,19 @@ ActiveRecord::Schema.define(version: 20180320135847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "booking_id"
+    t.boolean "the_pickup", default: false
     t.index ["booking_id"], name: "index_delivery_details_on_booking_id"
+    t.index ["the_pickup"], name: "index_delivery_details_on_the_pickup"
+  end
+
+  create_table "payment_details", force: :cascade do |t|
+    t.string "transaction_id"
+    t.string "trans_order_id"
+    t.string "trans_hash"
+    t.integer "booking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_payment_details_on_booking_id"
   end
 
   create_table "tracking_details", force: :cascade do |t|

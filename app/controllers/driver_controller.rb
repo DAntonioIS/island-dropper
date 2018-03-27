@@ -1,6 +1,7 @@
 class DriverController < ApplicationController
  
-	#this loads driver form
+	
   def apply
+  	#this loads driver form
   end
 end

@@ -51,7 +51,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-         <%= link_to 'ISLAND DROPPER', root_path, :class => 'navbar-brand' %> 
+
+         <% if user_signed_in? %>
+         <%= link_to 'ISLAND DROPPER', bookings_path, :class => 'navbar-brand' %> 
+          <% else %> 
+          <%= link_to 'ISLAND DROPPER', root_path, :class => 'navbar-brand' %> 
+          <% end %>   
         <!-- <a class="navbar-brand" href="root_path">ISLAND DROPPER</a> -->
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
@@ -74,10 +79,11 @@
 
               <li class="dropdown">
                  
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %>  <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">MANAGE <b class="caret"></b></a>
 
                <ul class="dropdown-menu">
-                   <!--<li class="dropdown-header">Manage Profile!</li> -->
+                   <li class="dropdown-header"><%= current_user.email %></li> 
+                   <li class="divider"></li>
                     <li><%= link_to 'Book Deliveries', new_bookings_path, :class => 'navbar-link' %> </li>
                     <li><%= link_to 'View Deliveries', bookings_path, :class => 'navbar-link' %> </li>
                     <li class="divider"></li>
@@ -113,20 +119,59 @@
 
     </div> <!-- /container -->
 
-    <div class="container">
-      <div class="row">
+    <!-- <div class="container">    footer-->
+      <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-sm-3 myCols">
+                    <h5>Get Started</h5>
+                    <ul>
+                      <li><%= link_to 'Sign Up', new_bookings_path %> </li>
+                      <li><%= link_to 'Help', new_bookings_path %> </li>
+                      <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Our Company</h5>
+                    <ul>
+                        <li><%= link_to 'About', new_bookings_path %> </li>
+                        <li><%= link_to 'Careers', new_bookings_path %> </li>
+                        <li><%= link_to 'Partners', new_bookings_path %> </li>
 
-         <div class="col-lg-9">
+                    </ul>
+                </div>
+                <div class="col-sm-3 myCols">
+                    <h5>Legal Stuff</h5>
+                    <ul>
+                       <li><%= link_to 'Privacy Policy', new_bookings_path %> </li>
+                      <li><%= link_to ' Terms of Service', new_bookings_path %> </li>
+                         
+                    </ul>
+                </div>
 
-           <footer>
-            <p>Island Dropper Trinidad Limited &copy; Company 2018</p>
-           </footer> 
-
-        </div>       
-         
-        </div>     
-
-    </div> <!--  footer container -->
+                <div class="col-sm-3 myCols">
+                    <h5>Nice Links</h5>
+                    <ul>
+                       <li><%= link_to 'Log in', new_bookings_path %> </li>
+                        <li><%= link_to 'Contact us', new_bookings_path %> </li>
+                         <li><%= link_to 'Drivers', new_bookings_path %> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="social-networks">
+            <a href="#" ><i class="fa fa-instagram"></i></a>        
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+             <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>         
+        </div>
+        <div class="footer-copyright">
+            <p>© 2018 Island Dropper Trinidad </p>
+        </div>
+    </footer>
+      
+  <!--  </div>  footer end container -->
 
   </body>
 </html>

@@ -85,6 +85,7 @@ class BookingsController < ApplicationController
             #update partial booking and pass to view
             @partialbooking.delivery_distance=@parse['quote']['distanceKm']
             @partialbooking.delivery_price=@parse['quote']['fee']['cost'].to_d
+            @partialbooking.delivery_price_cents=@parse['quote']['fee']['costCents'].to_i
             @pickUp.delivery_best_possible_time=@parse['quote']['pickup']['time']['average']
             @dropOff.delivery_best_possible_time=@parse['quote']['dropoff']['time']['average']
 

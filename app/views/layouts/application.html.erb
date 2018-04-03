@@ -120,6 +120,10 @@
     </div> <!-- /container -->
 
     <!-- <div class="container">    footer-->
+     <% if  current_page?(new_user_registration_path) || current_page?(new_user_session_path) %>
+        <!-- do nothing -->
+     <% else %>
+   
       <footer id="myFooter">
         <div class="container">
             <div class="row">
@@ -170,7 +174,7 @@
             <p>© 2018 Island Dropper Trinidad </p>
         </div>
     </footer>
-      
+       <% end %> 
   <!--  </div>  footer end container -->
 
   </body>

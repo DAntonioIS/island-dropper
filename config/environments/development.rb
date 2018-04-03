@@ -37,6 +37,16 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
+  config.action_mailer.smtp_settings = {
+    user_name:      'dwayned.antoniois@gmail.com', #needs to be revisited
+    password:       'rbD2989,D2014',#Rails.application.secrets.key_sendmail_password.to_s,
+    domain:         'localhost:3000',
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
    
 
   # Don't care if the mailer can't send.
